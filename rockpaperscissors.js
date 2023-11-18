@@ -1,21 +1,5 @@
 'use strict';
 
-/*
-LOOP
-CHOOSE rock, paper, or scissors randomly for the computer player
-GET player choice of rock, paper or scissors
-    REGULARIZE input
-    CHECK whether input matches rock, paper, or scissors (or r, p, s)
-    IF input is Q then exit, ELSE continue
-EVALUATE which player wins
-    paper beats rock
-    rock beats scissors
-    scissors beats paper
-    ties are ties
-REPORT winner
-REPEAT
-*/
-
 game();
 
 
@@ -26,6 +10,7 @@ function game() {
 
     let computerScore = 0;
     let playerScore = 0;
+    let victor = "";
 
     for (let i = 1; i <= 5; i++){
 
@@ -43,44 +28,25 @@ function game() {
         console.log("Game " + i);
         console.log("Computer: " + computer + ", Player: " + player);
         console.log("Winner: " + winner + "\n");
-        console.log("Score: Computer " + computerScore + ", Player " + playerScore);
+        console.log("Score: Computer " + computerScore + "; Player " + playerScore);
         
         }
 
-        //determine victor
+    //determine victor
 
-        if (playerScore === computerScore){
-            let victor = "nobody: it's a tie!!!";
-        }
-        else if (playerScore > computerScore) {
-            let victor = "the player";
-        }
-        else if (playerScore < computerScore){
-            let victor = "the computer";
-        }
+    if (playerScore === computerScore){
+        victor = "nobody: it's a tie";
+    }else if (playerScore > computerScore) {
+        victor = "the player";
+    }else if (playerScore < computerScore){
+        victor = "the computer";
+    }else{
+        victor = "error";
+    }
 
         console.log("Victory goes to " + victor + "!!!");
 
     }
-
-
-function oldGame() {
-
-    for (let i = 0; i <= 5; i++){
-
-        let computer = getComputerChoice();
-        let player = getPlayerChoice();
-        let winner = findWinner(computer, player);
-        
-        console.log("Game #" + i + ":\n");
-        console.log("Computer choice: " + computer);
-        console.log("Player choice: " + player);
-        console.log("Winner: " + winner);
-    }
-
-}
-
-
 
 function getComputerChoice() {
 
