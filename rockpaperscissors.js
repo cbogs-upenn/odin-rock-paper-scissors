@@ -1,3 +1,5 @@
+'use strict';
+
 /*
 LOOP
 CHOOSE rock, paper, or scissors randomly for the computer player
@@ -14,17 +16,35 @@ REPORT winner
 REPEAT
 */
 
-getComputerChoice();
-console.log("Computer choice: " + computerChoice);
+console.log("Computer choice: " + getComputerChoice());
+
+
+
 
 
 function getComputerChoice() {
 
     //CHOOSE rock, paper, or scissors randomly for the computer player
-    // Do I want to use numbers or strings? Probably strings are easiest
 
     let computerChoice = chooseWeapon();
     return computerChoice;   
+
+}
+
+function getPlayerChoice() {
+   
+
+    // CHECK whether input matches rock, paper, scissors, or quit (or r, p, s, q)
+    // IF input is Q then exit, ELSE continue
+
+
+    // GET player choice of rock, paper or scissors
+    let playerInput = prompt("Rock, Paper, Scissors, Quit?","");
+
+    // REGULARIZE input
+    let playerChoice = 
+    
+
 
 }
 
@@ -32,7 +52,7 @@ function getComputerChoice() {
 function chooseWeapon() {
 
     let weaponNum = (Math.floor(Math.random() * 3)); // 0 Rock, 1 Paper, 2 Scissors
-    switch weaponNum {
+    switch(weaponNum) {
         case 0:
             return "Rock";
             break;
@@ -46,3 +66,12 @@ function chooseWeapon() {
             return "RANDOMIZATION ERROR";
     }
 }
+
+function capitalize(input) {
+    let firstLetter = input.slice(0,1).toUpperCase();
+    let remainder = input.slice(1, input.length).toLowerCase();
+
+    let newString = firstLetter + remainder;
+
+    return newString;
+  }
