@@ -17,7 +17,7 @@ REPEAT
 */
 
 console.log("Computer choice: " + getComputerChoice());
-
+console.log(getPlayerChoice());
 
 
 
@@ -33,8 +33,6 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
    
-
-    // CHECK whether input matches rock, paper, scissors, or quit (or r, p, s, q)
     // IF input is Q then exit, ELSE continue
 
 
@@ -42,10 +40,35 @@ function getPlayerChoice() {
     let playerInput = prompt("Rock, Paper, Scissors, Quit?","");
 
     // REGULARIZE input
-    let playerChoice = 
-    
+    let playerChoice = regularize(playerInput);
+    switch(playerChoice) {
+        case "R":
+        case "Rock":
+            playerChoice = "Rock";
+            break;
+        
+        case "P":
+        case "Paper":
+            playerChoice = "Paper";
+            break;
 
+        case "S":
+        case "Scissors":
+        case "Scissor":
+            playerChoice = "Scissors";
+            break;
+        
+        case "Q":
+        case "Quit":
+            playerChoice = "Quit";
+            break;
 
+        default:
+            playerChoice = "mismatch";
+            break;
+    }
+
+    return (playerChoice);
 }
 
 
@@ -67,7 +90,7 @@ function chooseWeapon() {
     }
 }
 
-function capitalize(input) {
+function regularize(input) {
     let firstLetter = input.slice(0,1).toUpperCase();
     let remainder = input.slice(1, input.length).toLowerCase();
 
