@@ -15,7 +15,7 @@ REPEAT
 */
 
 getComputerChoice();
-console.log(computerChoice);
+console.log("Computer choice: " + computerChoice);
 
 
 function getComputerChoice() {
