@@ -1,5 +1,6 @@
 'use strict';
 
+// run the game
 game();
 
 
@@ -18,15 +19,17 @@ function game() {
 
     for (let i = 1; i <= 5; i++){
 
+        //get our weapons from the respective functions
         let computer = getComputerChoice();
         let player = getPlayerChoice();
         
-        //check for valid playerChoice
+        //check for valid playerChoice and force a re-entry if invalid
         while (player === "mismatch"){
             alert("Invalid choice, choose again.");
             player = getPlayerChoice();
         }
 
+        //determine the winner and set some variables to handle the victory message
         let winner = findWinner(computer, player);
         
         if (winner === "Computer"){
@@ -45,6 +48,7 @@ function game() {
             winningWeapon = "Neither";
         }
 
+        //handle the specific language for the game 
         switch (winningWeapon){
             case "Paper":
                 beats = " covers ";
@@ -66,16 +70,20 @@ function game() {
                 beats = " beats ";
         }
 
-        
+        // and output our results
+
         console.log("Game " + i);
         console.log("Computer: " + computer + ", Player: " + player);
 
-        if (winningWeapon === "Neither"){
-            console.log("It's a Match! This round's a tie!");
-        } else {
-        console.log(winningWeapon + beats + losingWeapon + ": " + winningPlayerMessage);
-        }        
+        //handle a tie, and output the result message
 
+            if (winningWeapon === "Neither"){
+                console.log("It's a Match! This round's a tie!");
+            } else {
+            console.log(winningWeapon + beats + losingWeapon + ": " + winningPlayerMessage);
+            }        
+
+        //update running score
         console.log("Score: Computer " + computerScore + "; Player " + playerScore);
         
         }
@@ -95,6 +103,10 @@ function game() {
         console.log("Victory goes to " + victor + "!!!");
 
     }
+
+
+// FUNCTIONS BEGIN HERE
+
 
 function getComputerChoice() {
 
