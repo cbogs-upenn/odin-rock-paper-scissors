@@ -16,9 +16,18 @@ REPORT winner
 REPEAT
 */
 
-console.log("Computer choice: " + getComputerChoice());
-console.log(getPlayerChoice());
+game();
 
+
+function game() {
+    let computer = getComputerChoice();
+    let player = getPlayerChoice();
+    let winner = findWinner(computer, player);
+    
+    console.log("Computer choice: " + computer);
+    console.log("Player choice: " + player);
+    console.log("Winner: " + winner);
+}
 
 
 
@@ -61,6 +70,7 @@ function getPlayerChoice() {
         case "Q":
         case "Quit":
             playerChoice = "Quit";
+            quitGame();
             break;
 
         default:
@@ -98,3 +108,37 @@ function regularize(input) {
 
     return newString;
   }
+
+
+function findWinner(computer, player){
+    // EVALUATE which player wins
+    // paper beats rock
+    // rock beats scissors
+    // scissors beats paper
+    // ties are ties
+
+    if ((computer === "Paper" && player === "Rock")||
+        (computer === "Rock" && player === "Scissors")||
+        (computer === "Scissors" && player === "Paper")
+        ) 
+    {
+        return "Computer";
+    }
+
+    else if ((player === "Paper" && computer === "Rock")||
+    (player === "Rock" && computer === "Scissors")||
+    (player === "Scissors" && computer === "Paper")
+    ) 
+    {
+        return "Player";
+    }
+
+    else if (player === computer) {
+        return "Tie";
+    }
+
+}  
+
+function quitGame() {
+    console.log("Thanks for playing!  Goodbye!")
+}
