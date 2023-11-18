@@ -5,7 +5,7 @@ LOOP
 CHOOSE rock, paper, or scissors randomly for the computer player
 GET player choice of rock, paper or scissors
     REGULARIZE input
-    CHECK whether input matches rock, paper, scissors, or quit (or r, p, s, q)
+    CHECK whether input matches rock, paper, or scissors (or r, p, s)
     IF input is Q then exit, ELSE continue
 EVALUATE which player wins
     paper beats rock
@@ -20,13 +20,64 @@ game();
 
 
 function game() {
-    let computer = getComputerChoice();
-    let player = getPlayerChoice();
-    let winner = findWinner(computer, player);
-    
-    console.log("Computer choice: " + computer);
-    console.log("Player choice: " + player);
-    console.log("Winner: " + winner);
+
+    // play five rounds; keep score
+    // report winner
+
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let i = 1; i <= 5; i++){
+
+        let computer = getComputerChoice();
+        let player = getPlayerChoice();
+        let winner = findWinner(computer, player);
+        
+        if (winner === "Computer"){
+            computerScore++;
+        }
+        else if (winner === "Player"){
+            playerScore++;
+        }
+        
+        console.log("Game " + i);
+        console.log("Computer: " + computer + ", Player: " + player);
+        console.log("Winner: " + winner + "\n");
+        console.log("Score: Computer " + computerScore + ", Player " + playerScore);
+        
+        }
+
+        //determine victor
+
+        if (playerScore === computerScore){
+            let victor = "nobody: it's a tie!!!";
+        }
+        else if (playerScore > computerScore) {
+            let victor = "the player";
+        }
+        else if (playerScore < computerScore){
+            let victor = "the computer";
+        }
+
+        console.log("Victory goes to " + victor + "!!!");
+
+    }
+
+
+function oldGame() {
+
+    for (let i = 0; i <= 5; i++){
+
+        let computer = getComputerChoice();
+        let player = getPlayerChoice();
+        let winner = findWinner(computer, player);
+        
+        console.log("Game #" + i + ":\n");
+        console.log("Computer choice: " + computer);
+        console.log("Player choice: " + player);
+        console.log("Winner: " + winner);
+    }
+
 }
 
 
@@ -42,11 +93,8 @@ function getComputerChoice() {
 
 function getPlayerChoice() {
    
-    // IF input is Q then exit, ELSE continue
-
-
     // GET player choice of rock, paper or scissors
-    let playerInput = prompt("Rock, Paper, Scissors, Quit?","");
+    let playerInput = prompt("Rock, Paper, Scissors?","");
 
     // REGULARIZE input
     let playerChoice = regularize(playerInput);
@@ -67,14 +115,16 @@ function getPlayerChoice() {
             playerChoice = "Scissors";
             break;
         
-        case "Q":
-        case "Quit":
-            playerChoice = "Quit";
-            quitGame();
-            break;
+        //case "Q":
+        //case "Quit":
+            //playerChoice = "Quit";
+            //quitGame();
+            //break;
 
         default:
             playerChoice = "mismatch";
+            alert("Invalid choice, choose again.");
+            getPlayerChoice();
             break;
     }
 
