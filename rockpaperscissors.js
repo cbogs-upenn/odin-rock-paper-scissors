@@ -11,6 +11,10 @@ function game() {
     let computerScore = 0;
     let playerScore = 0;
     let victor = "";
+    let winningWeapon = "";
+    let losingWeapon = "";
+    let beats = "";
+    let winningPlayerMessage = "";
 
     for (let i = 1; i <= 5; i++){
 
@@ -27,14 +31,51 @@ function game() {
         
         if (winner === "Computer"){
             computerScore++;
+            winningWeapon = computer;
+            losingWeapon = player;
+            winningPlayerMessage = "Computer wins!";
         }
         else if (winner === "Player"){
             playerScore++;
+            winningWeapon = player;
+            losingWeapon = computer;
+            winningPlayerMessage = "Player wins!";
         }
+        else if (winner === "Tie"){
+            winningWeapon = "Neither";
+        }
+
+        switch (winningWeapon){
+            case "Paper":
+                beats = " covers ";
+                break;
+            
+            case "Rock":
+                beats = " breaks ";
+                break;
+            
+            case "Scissors":
+                beats = " cuts ";
+                break;
+            
+            case "Neither":
+                beats = " matches ";
+                break;
+
+            default:
+                beats = " beats ";
+        }
+
         
         console.log("Game " + i);
         console.log("Computer: " + computer + ", Player: " + player);
-        console.log("Winner: " + winner + "\n");
+
+        if (winningWeapon === "Neither"){
+            console.log("It's a Match! This round's a tie!");
+        } else {
+        console.log(winningWeapon + beats + losingWeapon + ": " + winningPlayerMessage);
+        }        
+
         console.log("Score: Computer " + computerScore + "; Player " + playerScore);
         
         }
@@ -161,6 +202,16 @@ function findWinner(computer, player){
     }
 
 }  
+
+function sayWinner(computer, player) {
+
+    // computer holds computerChoice
+    // player holds playerChoice
+
+    
+
+
+}
 
 function quitGame() {
     console.log("Thanks for playing!  Goodbye!")
