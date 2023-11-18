@@ -16,6 +16,13 @@ function game() {
 
         let computer = getComputerChoice();
         let player = getPlayerChoice();
+        
+        //check for valid playerChoice
+        while (player === "mismatch"){
+            alert("Invalid choice, choose again.");
+            player = getPlayerChoice();
+        }
+
         let winner = findWinner(computer, player);
         
         if (winner === "Computer"){
@@ -89,8 +96,8 @@ function getPlayerChoice() {
 
         default:
             playerChoice = "mismatch";
-            alert("Invalid choice, choose again.");
-            getPlayerChoice();
+            // alert("Invalid choice, choose again.");
+            // getPlayerChoice();
             break;
     }
 
