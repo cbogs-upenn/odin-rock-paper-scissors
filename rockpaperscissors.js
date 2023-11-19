@@ -136,57 +136,6 @@ function getComputerChoice() {
         }
     }
 
-
-function getPlayerChoice() {
-
-    // GET player choice of rock, paper or scissors
-    let playerInput = prompt("Rock, Paper, Scissors?", "");
-
-    // REGULARIZE input
-    let playerChoice = regularize(playerInput);
-    switch (playerChoice) {
-        case "R":
-        case "Rock":
-            playerChoice = "Rock";
-            break;
-
-        case "P":
-        case "Paper":
-            playerChoice = "Paper";
-            break;
-
-        case "S":
-        case "Scissors":
-        case "Scissor":
-            playerChoice = "Scissors";
-            break;
-
-        //case "Q":
-        //case "Quit":
-        //playerChoice = "Quit";
-        //quitGame();
-        //break;
-
-        default:
-            playerChoice = "mismatch";
-            // alert("Invalid choice, choose again.");
-            // getPlayerChoice();
-            break;
-    }
-
-    return (playerChoice);
-}
-
-function regularize(input) {
-    let firstLetter = input.slice(0, 1).toUpperCase();
-    let remainder = input.slice(1, input.length).toLowerCase();
-
-    let newString = firstLetter + remainder;
-
-    return newString;
-}
-
-
 function findWinner(computer, player) {
     // EVALUATE which player wins
     // paper beats rock
@@ -212,18 +161,4 @@ function findWinner(computer, player) {
         return "Tie";
     }
 
-}
-
-function sayWinner(computer, player) {
-
-    // computer holds computerChoice
-    // player holds playerChoice
-
-
-
-
-}
-
-function quitGame() {
-    console.log("Thanks for playing!  Goodbye!")
 }
