@@ -23,6 +23,24 @@ rockButton.addEventListener('click', function(){ game("Rock"); });
 paperButton.addEventListener('click', function(){ game("Paper"); });
 scissorsButton.addEventListener('click', function(){ game("Scissors"); });
 
+const gameOutput = document.querySelector('.gameresults');
+
+const gameNumberDisplay = document.createElement('p');
+    gameNumberDisplay.textContent = "Select a weapon!";
+    gameOutput.appendChild(gameNumberDisplay);
+
+const playerChoiceDisplay = document.createElement('p');
+    gameOutput.appendChild(playerChoiceDisplay);
+
+const computerChoiceDisplay = document.createElement('p');
+    gameOutput.appendChild(computerChoiceDisplay);
+    
+const battleResultDisplay = document.createElement('p');
+    gameOutput.appendChild(battleResultDisplay);
+
+const overallWinnerDisplay = document.createElement('p');
+    gameOutput.appendChild(overallWinnerDisplay);
+
 
 
 function game(playerChoice) {
@@ -77,38 +95,38 @@ function game(playerChoice) {
 
         // and output our results
 
-        console.log("Game " + gameNumber);
-        console.log("Computer chooses: " + computer);
-
+            gameNumberDisplay.textContent = "Game #" + gameNumber;
+            playerChoiceDisplay.textContent = "You chose: " + player;
+            computerChoiceDisplay.textContent = "Computer chose: " + computer;
+ 
         //handle a tie, and output the result message
 
         if (winningWeapon === "Neither") {
-            console.log("It's a Match! This round's a tie!");
+            battleResultDisplay.textContent= "It's a Match! This round's a tie!";
         } else {
-            console.log(winningWeapon + beats + losingWeapon + ": " + winningPlayerMessage);
+            battleResultDisplay.textContent = winningWeapon + beats + losingWeapon + ": " + winningPlayerMessage;
         }
 
         //update running score
         console.log("Score: Computer " + computerScore + "; Player " + playerScore);
 
 
+        //determine victor
+
+        if (playerScore === computerScore) {
+            victor = "it's a tie";
+        } else if (playerScore > computerScore) {
+            victor = "the player";
+        } else if (playerScore < computerScore) {
+            victor = "the computer";
+        } else {
+            victor = "error";
+        }
+
+        overallWinnerDisplay.textContent = "Current overall winner: " + victor + "!";
+
         gameNumber++;
-
     }
-
-    //determine victor
-
-    if (playerScore === computerScore) {
-        victor = "it's a tie";
-    } else if (playerScore > computerScore) {
-        victor = "the player";
-    } else if (playerScore < computerScore) {
-        victor = "the computer";
-    } else {
-        victor = "error";
-    }
-
-    console.log("Current overall winner: " + victor + "!");
 
     //original loop ended here
 }
