@@ -48,6 +48,8 @@ const gameOutput = document.querySelector('.gameresults');
         overallWinnerDisplay.setAttribute("id", "overallwinner");
         gameOutput.appendChild(overallWinnerDisplay);
 
+    const endMessage = document.querySelector('.endmessage');
+
 
 
 function game(playerChoice) {
@@ -138,6 +140,10 @@ function game(playerChoice) {
 
         overallWinnerDisplay.textContent = "Current overall winner: " + victor + " (" + highScore + "-" + lowScore + ")!";
 
+        if (highScore >= 5){
+            endGame(victor);
+        }
+
         gameNumber++;
     }
 
@@ -191,5 +197,23 @@ function findWinner(computer, player) {
     else if (player === computer) {
         return "Tie";
     }
+
+}
+
+function endGame(winner) {
+
+    //clear buttons and display
+    //replace display with winner announcement and stats
+
+    rockButton.remove();
+    paperButton.remove();
+    scissorsButton.remove();
+    gameOutput.remove();
+
+    const winnerAnnouncement = document.createElement('div');
+        winnerAnnouncement.textContent = "The winner is " + winner + "!!!";
+        winnerAnnouncement.setAttribute("id", "winnerannouncement");
+        endMessage.appendChild(winnerAnnouncement);
+
 
 }
