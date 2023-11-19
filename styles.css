@@ -6,3 +6,31 @@ button {
     background-color: bisque;
     margin-top: 30px;
 }
+
+#gamenumber {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 10px;
+
+}
+
+#playerchoice {
+
+}
+
+#computerchoice {
+
+}
+
+#battleresult {
+    margin-top: 5px;
+    font-size: large;
+    font-weight: bold;
+
+}
+
+#overallwinner {
+    margin-top: 10px;
+    font-weight: bold;
+
+}

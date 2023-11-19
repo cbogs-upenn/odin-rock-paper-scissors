@@ -10,6 +10,8 @@ let losingWeapon = "";
 let beats = "";
 let winningPlayerMessage = "";
 let gameNumber = 1;
+let highScore = 0;
+let lowScore = 0;
 
 // set up GUI
 
@@ -25,21 +27,26 @@ scissorsButton.addEventListener('click', function(){ game("Scissors"); });
 
 const gameOutput = document.querySelector('.gameresults');
 
-const gameNumberDisplay = document.createElement('p');
-    gameNumberDisplay.textContent = "Select a weapon!";
-    gameOutput.appendChild(gameNumberDisplay);
+    const gameNumberDisplay = document.createElement('div');
+        gameNumberDisplay.textContent = "Select a weapon!";
+        gameNumberDisplay.setAttribute("id", "gamenumber");
+        gameOutput.appendChild(gameNumberDisplay);
 
-const playerChoiceDisplay = document.createElement('p');
-    gameOutput.appendChild(playerChoiceDisplay);
+    const playerChoiceDisplay = document.createElement('div');
+        playerChoiceDisplay.setAttribute("id", "playerchoice");
+        gameOutput.appendChild(playerChoiceDisplay);
 
-const computerChoiceDisplay = document.createElement('p');
-    gameOutput.appendChild(computerChoiceDisplay);
-    
-const battleResultDisplay = document.createElement('p');
-    gameOutput.appendChild(battleResultDisplay);
+    const computerChoiceDisplay = document.createElement('div');
+        computerChoiceDisplay.setAttribute("id", "computerchoice");
+        gameOutput.appendChild(computerChoiceDisplay);
+        
+    const battleResultDisplay = document.createElement('div');
+        battleResultDisplay.setAttribute("id", "battleresult");
+        gameOutput.appendChild(battleResultDisplay);
 
-const overallWinnerDisplay = document.createElement('p');
-    gameOutput.appendChild(overallWinnerDisplay);
+    const overallWinnerDisplay = document.createElement('div');
+        overallWinnerDisplay.setAttribute("id", "overallwinner");
+        gameOutput.appendChild(overallWinnerDisplay);
 
 
 
@@ -115,15 +122,21 @@ function game(playerChoice) {
 
         if (playerScore === computerScore) {
             victor = "it's a tie";
+            highScore = playerScore;
+            lowScore = computerScore;
         } else if (playerScore > computerScore) {
             victor = "the player";
+            highScore = playerScore;
+            lowScore = computerScore;
         } else if (playerScore < computerScore) {
             victor = "the computer";
+            highScore = computerScore;
+            lowScore = playerScore;
         } else {
             victor = "error";
         }
 
-        overallWinnerDisplay.textContent = "Current overall winner: " + victor + "!";
+        overallWinnerDisplay.textContent = "Current overall winner: " + victor + " (" + highScore + "-" + lowScore + ")!";
 
         gameNumber++;
     }
