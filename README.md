@@ -2,6 +2,8 @@
 A rock-paper-scissors implementation for the Odin Project JS course
 
 
+TEST MACBOOK REPOSITORY
+
 PSEUDOCODE
 
 LOOP
